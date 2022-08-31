@@ -1,5 +1,6 @@
 
-import { Text, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, TouchableOpacity, StyleSheet } from "react-native";import { useTheme } from "../content/ThemeContext";
+import { colors } from "../styles/colors";
 
 
 type Props = {
@@ -11,11 +12,13 @@ type Props = {
 
 
 export function Button(props: Props) {
+    const { theme } = useTheme();
+
     
     let backgroundColor = "#343434";
 
     if (props.isOrange) {
-        backgroundColor = "orange";
+        backgroundColor = theme === "dark" ? colors.buttonDark : colors.buttonLight;
     }  else if (props.isGray) {
         backgroundColor = "#a6a6a6";
     }
